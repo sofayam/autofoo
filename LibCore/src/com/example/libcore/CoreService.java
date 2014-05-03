@@ -35,6 +35,7 @@ public class CoreService extends Service implements Callout{
 		return Service.START_STICKY;
 	}
 	
+	// ----------------- C a l l o u t
 	
 	// ----------------- U n u s e d 
 	@Override
