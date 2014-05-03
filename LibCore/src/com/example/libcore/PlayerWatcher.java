@@ -26,10 +26,10 @@ public class PlayerWatcher {
                     // a Thread loop
                     while(progress<100) {
                         progress = player.getProgress();
-                        
+                    
                         sleep(1000);
                         callout.showProgress(progress);
-        				Log.i("foo", "in the prog ctr thread");
+        				Log.i(TAG, "in the progress ctr thread");
  
                     }
                 } catch(InterruptedException e) {

@@ -11,6 +11,7 @@ public class Player {
 	void play (String track) {
 		Log.i(TAG,"Now playing");
 		playing = true;
+		progress = 0;
 	}
 	void pause(){
 		Log.i(TAG,"Paused");
@@ -26,6 +27,10 @@ public class Player {
 		return playing;
 	}
 	int getProgress() {
+		progress += 1;
+		if (progress > 100) { 
+			progress = 0; 
+		};
 		return progress;
 	}
 
