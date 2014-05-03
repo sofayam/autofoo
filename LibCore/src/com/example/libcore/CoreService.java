@@ -37,10 +37,19 @@ public class CoreService extends Service implements Callout{
 	
 	// ----------------- C a l l o u t
 	
+	@Override
+	public void showProgress(int progress) {
+		// TODO Auto-generated method stub
+		// Create suitably named intent with the right extras
+		// send it
+	}
+	
 	// ----------------- U n u s e d 
 	@Override
 	public IBinder onBind(Intent intent) {
 		// TODO: Return the communication channel to the service.
 		throw new UnsupportedOperationException("Not yet implemented");
 	}
+
+
 }
