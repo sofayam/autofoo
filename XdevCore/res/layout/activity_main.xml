@@ -29,15 +29,22 @@
         android:text="play" />
 
     <Button
-        android:id="@+id/stop"
+        android:id="@+id/pause"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/play"
         android:layout_toRightOf="@+id/play"
-        android:text="stop" />
+        android:text="pause" />
 
-
+    <Button
+        android:id="@+id/resume"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/progress"
+        android:layout_toRightOf="@+id/pause"
+        android:text="resume" />
     
     <ProgressBar
         android:id="@+id/progress"
@@ -46,6 +53,7 @@
         android:layout_height="20dp"
         android:layout_below="@+id/start"
         android:layout_marginTop="17dp" />
-    
+
+
 
 </RelativeLayout>

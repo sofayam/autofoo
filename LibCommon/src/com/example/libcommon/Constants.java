@@ -14,7 +14,7 @@ public class Constants {
 	
 	public static String coreIntent = "com.example.libcommon.core";
 	
-	public static enum CoreCommand {START, CONFIG, PLAY}; // TODO play is just for testing
+	public static enum CoreCommand {START, CONFIG, PLAY, PAUSE, RESUME}; // TODO play is just for testing
 	
 	public static int FOO = 10;
 	

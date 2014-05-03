@@ -54,6 +54,16 @@ public class CoreService extends Service implements Callout{
 			core.play("foobar blues");
 			break;
 		}
+		
+		case PAUSE: {
+			core.pause();
+			break;
+		}
+		
+		case RESUME: {
+			core.resume();
+			break;
+		}
 		default: 
 			Log.i(TAG, "unrecognised command");
 		}

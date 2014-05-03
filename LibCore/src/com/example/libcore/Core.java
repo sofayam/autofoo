@@ -46,6 +46,15 @@ public class Core {
 		playerWatcher.play(track);
 	}
 	
+	void pause() {
+		// TODO Seems to be OK just to pass these calls straight through
+		// rather than just creating a bunch of boilerplate
+		playerWatcher.player.pause();
+	}
+	
+	void resume() {
+		playerWatcher.player.resume();
+	}
 	
 
 }

@@ -103,7 +103,29 @@ public class MainActivity extends Activity {
 
 			}
 		});
-	
+		Button pauseButton = (Button) findViewById(R.id.pause);
+		pauseButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Log.i(TAG, "starting to PAUSE");
+				Intent intent = new Intent(me,CoreService.class);
+				intent.putExtra("command", CoreCommand.PAUSE);
+				startService(intent);
+
+			}
+		});
+		Button resumeButton = (Button) findViewById(R.id.resume);
+		resumeButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Log.i(TAG, "RESUMing play");
+				Intent intent = new Intent(me,CoreService.class);
+				intent.putExtra("command", CoreCommand.RESUME);
+				startService(intent);
+
+			}
+		});
+		
 		prog = (ProgressBar)findViewById(R.id.progress);
 		prog.setMax(100);
 	}

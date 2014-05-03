@@ -7,6 +7,7 @@ public class Player {
 	private String TAG = "com.example.libcore.Player";
 	private Boolean playing = false;
 	private int progress = 0;
+	private Boolean paused = false;
 	
 	void play (String track) {
 		Log.i(TAG,"Now playing");
@@ -15,9 +16,11 @@ public class Player {
 	}
 	void pause(){
 		Log.i(TAG,"Paused");
+		paused = true;
 	}
 	void resume(){
 		Log.i(TAG,"Resumed");
+		paused = false;
 	}
 	void stop(){
 		Log.i(TAG,"Stopped");
@@ -27,7 +30,9 @@ public class Player {
 		return playing;
 	}
 	int getProgress() {
-		progress += 1;
+		if (!paused) {
+			progress += 1;	
+		}
 		if (progress > 100) { 
 			progress = 0; 
 		};
