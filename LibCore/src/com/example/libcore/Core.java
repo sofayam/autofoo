@@ -4,8 +4,13 @@ public class Core {
 	
 	Callout callout;
 	
+	
+	
 	// ------------ S t a t e
 	
+	public enum CoreState {BROWSING, BRIEFING, STOPPED};
+	
+	CoreState coreState;
 	
 	// ------------ L i f e c y c l e
 	
@@ -14,13 +19,23 @@ public class Core {
 	}
 	static Core revive() {
 		// TODO reconstruct my state from a file
-		return new Core();
-		
+		Core core = new Core();
+		core.coreState = CoreState.STOPPED;		
+		return core;
 	}
+	
 	void setCallout(Callout co) {
 		callout = co;
 	}
 	
+	void startBrowsing() {
+		coreState = CoreState.BROWSING;
+		
+	}
+	
+	void startBriefing() {
+		coreState = CoreState.BRIEFING;
+	}
 	
 	
 

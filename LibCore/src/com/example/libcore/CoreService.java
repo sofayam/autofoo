@@ -1,6 +1,8 @@
 package com.example.libcore;
 
 
+import com.example.libcommon.NestedMap;
+
 import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +27,7 @@ public class CoreService extends Service implements Callout{
 		Log.i("foo","destroyed service");
 		core.persist();
 	}
-	// ----------------- D i s p a t c h 
+	// ----------------- D i s p a t c h   f r o m   i n t e n t s
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 
@@ -35,6 +37,8 @@ public class CoreService extends Service implements Callout{
 		return Service.START_STICKY;
 	}
 	
+	
+	
 	// ----------------- C a l l o u t
 	
 	@Override
@@ -43,6 +47,12 @@ public class CoreService extends Service implements Callout{
 		// Create suitably named intent with the right extras
 		// send it
 	}
+	
+	public void sendConfig(NestedMap config) {
+		// TODO send config to GUI;
+	}
+	
+	
 	
 	// ----------------- U n u s e d 
 	@Override
