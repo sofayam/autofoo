@@ -1,17 +1,26 @@
 package com.example.xdevcore;
 
+import com.example.libcore.CoreService;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
-import com.example.libcore.Foo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
 public class MainActivity extends Activity {
 
+	static final String TAG = "com.example.xdevcode.MainActivity";
+	Activity me = this;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Foo f = new Foo();
-		
+		setupInterface();
 	}
 
 	@Override
@@ -20,5 +29,22 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	private void setupInterface () {
+
+
+		Button startServiceButton = (Button) findViewById(R.id.start);
+		startServiceButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Log.i(TAG, "starting Service");
+				Intent intent = new Intent(me,CoreService.class);
+				intent.putExtra("source", "main");
+				startService(intent);
+
+			}
+		});
+	}
+
 
 }

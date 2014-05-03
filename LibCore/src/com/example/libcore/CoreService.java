@@ -35,7 +35,7 @@ public class CoreService extends Service implements Callout{
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		String actionName = intent.getAction();
 		Bundle extras = intent.getExtras();
-		String commandName = extras.getString("command");
+		String commandName = extras.getString("command","none");
 		
 		Log.i(TAG,"got intent with actionName:" + actionName + " commandName: " + commandName);
 		
