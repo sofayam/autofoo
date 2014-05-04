@@ -129,12 +129,16 @@ public class MainActivity extends Activity {
 				
 				if (selected == CoreCommand.ADDCONFIG) {
 
-					intent.putExtra("key","categories:folk:selected");
+					intent.putExtra("key","categories:culture:selected");
 					intent.putExtra("val", "true");
 					startService(intent);
-					intent.putExtra("key","categories:folk:weight");
+					intent.putExtra("key","categories:culture:weight");
 					intent.putExtra("val", "4");
-					startService(intent);					
+					startService(intent);		
+					intent.putExtra("key","categories:culture:order");
+					intent.putExtra("val",1);
+					startService(intent);	
+					
 					
 				} else { 
 

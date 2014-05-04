@@ -4,15 +4,17 @@ package com.example.libcore;
 
 import com.example.libcommon.Constants;
 import com.example.libcommon.NestedMap;
-import com.example.libcommon.NestedMapContainer;
-import com.example.libcommon.Constants.DisplayCommand;
 import com.example.libcommon.Constants.CoreCommand;
+import com.example.libcommon.NewsForCategory;
+import com.example.libcommon.NewsItem;
+import com.example.libcommon.NewsService;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+
 
 public class CoreService extends Service implements Callout{
 	
@@ -96,8 +98,9 @@ public class CoreService extends Service implements Callout{
 		throw new UnsupportedOperationException("Not yet implemented");
 	}	
 	
-	// ----------------- C a l l o u t
+	// ----------------- C a l l o u t s
 	
+	// ----------------- GUI
 	
 	@Override
 	public void showProgress(int progress) {
@@ -132,5 +135,14 @@ public class CoreService extends Service implements Callout{
 		
 	}
 
+
+	
+	//--------------------- News Service
+	
+	@Override
+	public NewsForCategory getNews(String category, int count) {
+		return NewsService.getNews(category,count);
+
+	}
 
 }
