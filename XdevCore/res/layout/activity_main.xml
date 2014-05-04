@@ -7,53 +7,48 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
-
-    <Button
-        android:id="@+id/start"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="20dp"
-        android:text="start" />
-
-    <Button
-        android:id="@+id/play"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/start"
-        android:layout_toRightOf="@+id/start"
-        android:text="play" />
-
-    <Button
-        android:id="@+id/pause"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/play"
-        android:layout_toRightOf="@+id/play"
-        android:text="pause" />
-
-    <Button
-        android:id="@+id/resume"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/progress"
-        android:layout_toRightOf="@+id/pause"
-        android:text="resume" />
     
     <ProgressBar
         android:id="@+id/progress"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="fill_parent"
         android:layout_height="20dp"
-        android:layout_below="@+id/start"
         android:layout_marginTop="17dp" />
 
+    <Button
+        android:id="@+id/doit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/command"
+        android:layout_below="@+id/command"
+        android:layout_marginTop="22dp"
+        android:text="Do It" />
 
+    <Spinner
+        android:id="@+id/command"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/progress"
+        android:layout_below="@+id/progress"
+        android:layout_marginTop="18dp" />
+
+    <EditText
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nowPlaying"
+        android:layout_alignRight="@+id/nowPlaying"
+        android:layout_below="@+id/nowPlaying"
+        android:layout_marginTop="30dp"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/nowPlaying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/doit"
+        android:layout_alignRight="@+id/command"
+        android:layout_below="@+id/doit"
+        android:ems="10" />
 
 </RelativeLayout>

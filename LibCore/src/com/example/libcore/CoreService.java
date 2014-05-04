@@ -51,7 +51,7 @@ public class CoreService extends Service implements Callout{
 		case PLAY: {
 
 			Log.i(TAG, "PLAY Command received");
-			core.play("foobar blues");
+			core.play("foobar blues","blues");
 			break;
 		}
 		
@@ -75,11 +75,15 @@ public class CoreService extends Service implements Callout{
 		return Service.START_STICKY;
 	}
 	
-	
+	// ----------------- U n u s e d 
+	@Override
+	public IBinder onBind(Intent intent) {
+		// TODO: Return the communication channel to the service.
+		throw new UnsupportedOperationException("Not yet implemented");
+	}	
 	
 	// ----------------- C a l l o u t
 	
-	// TODO Intent building and sending utility here
 	
 	@Override
 	public void showProgress(int progress) {
@@ -89,7 +93,7 @@ public class CoreService extends Service implements Callout{
 		Intent i = new Intent(Constants.displayIntent);
 		i.putExtra("command", Constants.DisplayCommand.PROGRESS);
 		i.putExtra("percent", progress);
-		Log.i(TAG,"sending PROGRESS broadcast intent");
+		Log.v(TAG,"sending PROGRESS broadcast intent");
 		sendBroadcast(i);
 	}
 	
@@ -97,13 +101,14 @@ public class CoreService extends Service implements Callout{
 		// TODO send config to GUI;
 	}
 	
-	
-	
-	// ----------------- U n u s e d 
 	@Override
-	public IBinder onBind(Intent intent) {
-		// TODO: Return the communication channel to the service.
-		throw new UnsupportedOperationException("Not yet implemented");
+	public void nowPlaying(String track, String category) {
+		// TODO Auto-generated method stub
+		Intent i = new Intent(Constants.displayIntent);
+		i.putExtra("command", Constants.DisplayCommand.NOWPLAYING);
+		i.putExtra("title", track);
+		i.putExtra("category", category);
+		sendBroadcast(i);
 	}
 
 

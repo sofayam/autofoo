@@ -17,8 +17,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 
 
 public class MainActivity extends Activity {
@@ -26,7 +29,9 @@ public class MainActivity extends Activity {
 	static final String TAG = "com.example.xdevcode.MainActivity";
 	Activity me = this;
 	private ProgressBar prog;
-	private int progInt = 0;
+	Spinner command;
+	EditText category;
+	EditText nowPlaying;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +73,15 @@ public class MainActivity extends Activity {
 						prog.setProgress(progress);
 						break;
 					}
+					case NOWPLAYING: {
+						String cat = extras.getString("category", "None");
+						String playing = extras.getString("title","None");
+						Log.i(TAG, "title: " + playing + " with cat: " + cat);
+						nowPlaying.setText(playing);
+						category.setText(cat);
+						break;
+						
+					}
 					default: 
 						Log.i(TAG, "unrecognised command");
 					}
@@ -80,54 +94,34 @@ public class MainActivity extends Activity {
 
 	private void setupInterface () {
 
-
-		Button startServiceButton = (Button) findViewById(R.id.start);
-		startServiceButton.setOnClickListener(new OnClickListener() {
+		
+		prog = (ProgressBar)findViewById(R.id.progress);
+		prog.setMax(100);
+		
+		command = (Spinner) findViewById(R.id.command);
+		command.setAdapter(
+				new ArrayAdapter<CoreCommand>(
+						this, 
+						android.R.layout.simple_spinner_item, 
+						CoreCommand.values()));
+		
+		
+		Button doitButton = (Button) findViewById(R.id.doit);
+		doitButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Log.i(TAG, "starting Service");
+				CoreCommand selected = (CoreCommand) command.getSelectedItem();
+				Log.i(TAG, "Sending command: " + selected);
 				Intent intent = new Intent(me,CoreService.class);
-				intent.putExtra("command", CoreCommand.START);
-				startService(intent);
-
-			}
-		});
-		Button startPlayButton = (Button) findViewById(R.id.play);
-		startPlayButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Log.i(TAG, "starting to PLAY");
-				Intent intent = new Intent(me,CoreService.class);
-				intent.putExtra("command", CoreCommand.PLAY);
-				startService(intent);
-
-			}
-		});
-		Button pauseButton = (Button) findViewById(R.id.pause);
-		pauseButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Log.i(TAG, "starting to PAUSE");
-				Intent intent = new Intent(me,CoreService.class);
-				intent.putExtra("command", CoreCommand.PAUSE);
-				startService(intent);
-
-			}
-		});
-		Button resumeButton = (Button) findViewById(R.id.resume);
-		resumeButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Log.i(TAG, "RESUMing play");
-				Intent intent = new Intent(me,CoreService.class);
-				intent.putExtra("command", CoreCommand.RESUME);
+				intent.putExtra("command", selected);
 				startService(intent);
 
 			}
 		});
 		
-		prog = (ProgressBar)findViewById(R.id.progress);
-		prog.setMax(100);
+		nowPlaying = (EditText)findViewById(R.id.nowPlaying);
+		category = (EditText)findViewById(R.id.category);
+		
 	}
 
 

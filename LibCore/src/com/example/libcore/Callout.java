@@ -8,5 +8,6 @@ public interface Callout {
 	
 	void showProgress(int progress);
 	void sendConfig(NestedMap config);
+	void nowPlaying(String track, String category);
 	
 }

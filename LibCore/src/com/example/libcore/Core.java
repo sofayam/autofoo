@@ -42,8 +42,9 @@ public class Core {
 		coreState = CoreState.BRIEFING;
 	}
 	
-	void play(String track) {
+	void play(String track, String category) {
 		playerWatcher.play(track);
+		callout.nowPlaying(track,category);
 	}
 	
 	void pause() {

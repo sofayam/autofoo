@@ -29,7 +29,7 @@ public class PlayerWatcher {
                     
                         sleep(1000);
                         callout.showProgress(progress);
-        				Log.i(TAG, "in the progress ctr thread");
+        				Log.v(TAG, "in the progress ctr thread");
  
                     }
                 } catch(InterruptedException e) {
