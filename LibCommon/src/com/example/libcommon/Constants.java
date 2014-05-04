@@ -10,7 +10,8 @@ public class Constants {
 	
 	public static enum DisplayCommand {
 		PROGRESS,    // int percent
-		NOWPLAYING   // String title, String category 
+		NOWPLAYING,  // String title, String category 
+		SETCONFIG    // NestedMap config
 	};
 	
 
@@ -19,10 +20,11 @@ public class Constants {
 	
 	public static enum CoreCommand {
 		START,       //
-		CONFIG,      //
+		GETCONFIG,   //
 		PLAY,        //
 		PAUSE,       //
-		RESUME       //
+		RESUME,      //
+		ADDCONFIG    // String key, String val    
 	}; // TODO play is just for testing
 	
 	public static int FOO = 10;

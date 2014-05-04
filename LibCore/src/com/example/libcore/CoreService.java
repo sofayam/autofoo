@@ -4,6 +4,7 @@ package com.example.libcore;
 
 import com.example.libcommon.Constants;
 import com.example.libcommon.NestedMap;
+import com.example.libcommon.NestedMapContainer;
 import com.example.libcommon.Constants.DisplayCommand;
 import com.example.libcommon.Constants.CoreCommand;
 
@@ -64,12 +65,25 @@ public class CoreService extends Service implements Callout{
 			core.resume();
 			break;
 		}
+		
+		case GETCONFIG: {
+			core.getConfig();
+			break;
+		}
+		
+		case ADDCONFIG: {
+			String key = extras.getString("key");
+			String val = extras.getString("val");
+			core.addConfig(key,val);
+			break;
+		}
+		
 		default: 
 			Log.i(TAG, "unrecognised command");
 		}
-
-
+		
 		}
+
 		
 
 		return Service.START_STICKY;
@@ -97,18 +111,25 @@ public class CoreService extends Service implements Callout{
 		sendBroadcast(i);
 	}
 	
-	public void sendConfig(NestedMap config) {
-		// TODO send config to GUI;
-	}
 	
 	@Override
 	public void nowPlaying(String track, String category) {
-		// TODO Auto-generated method stub
+
 		Intent i = new Intent(Constants.displayIntent);
 		i.putExtra("command", Constants.DisplayCommand.NOWPLAYING);
 		i.putExtra("title", track);
 		i.putExtra("category", category);
 		sendBroadcast(i);
+	}
+
+	@Override
+	public void setConfig(NestedMap config) {
+
+		Intent i = new Intent(Constants.displayIntent);
+		i.putExtra("command", Constants.DisplayCommand.SETCONFIG);
+		i.putExtra("config", config.pack()); // !!!!! Don't forget to pack the config !!!!!
+		sendBroadcast(i);
+		
 	}
 
 

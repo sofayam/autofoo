@@ -13,7 +13,7 @@ public class NestedMapContainer implements Serializable{
 		contents = nm;
 	}
 	
-	NestedMap unpack(){
+	public NestedMap unpack(){
 		return contents;
 	}
 }

@@ -4,6 +4,9 @@ package com.example.xdevcore;
 import com.example.libcommon.Constants;
 import com.example.libcommon.Constants.DisplayCommand;
 import com.example.libcommon.Constants.CoreCommand;
+import com.example.libcommon.NestedMap;
+import com.example.libcommon.NestedMapContainer;
+
 
 import com.example.libcore.CoreService;
 
@@ -56,13 +59,13 @@ public class MainActivity extends Activity {
 	
 	private BroadcastReceiver bReceiver = new BroadcastReceiver() {
 		@Override
-		
+
 		public void onReceive(Context context, Intent intent) {
 			if(intent.getAction().equals(Constants.displayIntent)) {
 				Bundle extras = intent.getExtras();
 
 				if (extras != null) {
-			
+
 					DisplayCommand command = (DisplayCommand) intent.getSerializableExtra("command");
 					Log.i(TAG, "got command: " + command);
 
@@ -80,16 +83,25 @@ public class MainActivity extends Activity {
 						nowPlaying.setText(playing);
 						category.setText(cat);
 						break;
-						
+
 					}
-					default: 
+					case SETCONFIG: {
+						NestedMap config = ((NestedMapContainer)intent.getExtras().
+								get("config")).unpack();
+						Log.i(TAG, "got config " + config);
+						break;
+					}
+
+
+					default: 	
 						Log.i(TAG, "unrecognised command");
 					}
 				}
 			}
 		}
 	};
-	
+
+
 	
 
 	private void setupInterface () {
@@ -114,8 +126,22 @@ public class MainActivity extends Activity {
 				Log.i(TAG, "Sending command: " + selected);
 				Intent intent = new Intent(me,CoreService.class);
 				intent.putExtra("command", selected);
-				startService(intent);
+				
+				if (selected == CoreCommand.ADDCONFIG) {
 
+					intent.putExtra("key","categories:folk:selected");
+					intent.putExtra("val", "true");
+					startService(intent);
+					intent.putExtra("key","categories:folk:weight");
+					intent.putExtra("val", "4");
+					startService(intent);					
+					
+				} else { 
+
+					startService(intent);
+				
+				}
+				
 			}
 		});
 		

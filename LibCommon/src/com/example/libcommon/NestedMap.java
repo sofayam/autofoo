@@ -11,7 +11,7 @@ public class NestedMap extends HashMap<String,Object> implements Serializable{
 	
 	private static final long serialVersionUID = -5690396298231517172L;
 	
-	NestedMap deepClone() {
+	public NestedMap deepClone() {
 		NestedMap deep = new NestedMap();
 		for (String key: this.keySet()) {
 			Object val = this.get(key);
@@ -31,12 +31,12 @@ public class NestedMap extends HashMap<String,Object> implements Serializable{
 	}
 
 	
-	void putNested(String indices, String val) {
+	public void putNested(String indices, String val) {
 		String[] exploded = indices.split(":");
 		putNested(exploded,val);
 	}
 	
-	void putNested(String[] indices, String val) {
+	public void putNested(String[] indices, String val) {
 		String front = indices[0];
 		int indLength = indices.length;
 		if(indLength == 1) {
@@ -50,7 +50,7 @@ public class NestedMap extends HashMap<String,Object> implements Serializable{
 		}
 		
 	}
-	Object getNested(String[] indices) {
+	public Object getNested(String[] indices) {
 		Object base = this.get(indices[0]);
 		if (indices.length == 1) {
 			return base;
@@ -58,28 +58,34 @@ public class NestedMap extends HashMap<String,Object> implements Serializable{
 			return ((NestedMap)base).getNested(tail(indices));	
 		}	
 	}
-	NestedMap getNestedMap(String indices) {
+	public NestedMap getNestedMap(String indices) {
 		return (NestedMap)getNested(indices.split(":")); 
 	}
-	String getNestedString(String indices) {
+	public String getNestedString(String indices) {
 		return (String)getNested(indices.split(":"));		
 	}
 	
-/*	void add(NestedMap more) {
+	boolean isNM (Object o) {
+		return (o.getClass() == this.getClass());
+	}
+	public void add(NestedMap more) {
+		// TODO this will probably crash with badly structured configs (so best not do that :-)
 		for (String key: more.keySet()) {
 			if (this.containsKey(key)) {
 				Object val = this.get(key);
-				if (val.getClass() == this.getClass()) {
+				if (isNM(val)) {                            // if target is nm then recurse
 					NestedMap nval = (NestedMap) val;
 					nval.add((NestedMap) (more.get(key)));
 				} else {
-					
+					this.put(key, more.get(key));           // else overwrite
 				}
+			} else {
+				this.put(key, more.get(key));
 			}
 		}
-	}*/
+	}
 	
-	NestedMapContainer pack() {
+	public NestedMapContainer pack() {
 		return new NestedMapContainer(this);
 	}
 	
