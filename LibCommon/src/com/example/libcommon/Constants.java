@@ -19,13 +19,16 @@ public class Constants {
 	public static String coreIntent = "com.example.libcommon.core";
 	
 	public static enum CoreCommand {
-		START,       //
-		GETCONFIG,   //
-		PLAY,        //
-		PAUSE,       //
-		RESUME,      //
-		ADDCONFIG    // String key, String val    
-	}; // TODO play is just for testing
+		START,        //
+		GETCONFIG,    //
+		PLAYCATEGORY, // String category
+		PAUSE,        //
+		RESUME,       //
+		ADDCONFIG,    // String key, String val
+		
+		BROWSE,		  // 
+		PLAYBRIEFING  //
+	}; 
 	
 	public static int FOO = 10;
 	

@@ -79,8 +79,9 @@ public class Core {
 		
 	}
 	
-	void startBriefing() {
+	void playBriefing() {
 		coreState = CoreState.BRIEFING;
+		playerWatcher.playBriefing(playList);
 	}
 	
 	void play(String track, String category) {

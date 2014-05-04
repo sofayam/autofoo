@@ -51,12 +51,17 @@ public class CoreService extends Service implements Callout{
 			Log.i(TAG, "start command recvd by core"); // Pretty useless command really
 			break;
 		}
-		case PLAY: {
+/*		case PLAY: {
 
 			Log.i(TAG, "PLAY Command received");
 			core.play("foobar blues","blues");
 			break;
 		}
+*/		
+
+		case PLAYBRIEFING:
+			core.playBriefing();
+			break;
 		
 		case PAUSE: {
 			core.pause();
