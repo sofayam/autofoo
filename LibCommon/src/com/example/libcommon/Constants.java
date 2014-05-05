@@ -29,9 +29,7 @@ public class Constants {
 		BROWSE,		  // 
 		PLAYBRIEFING  //
 	}; 
-	
-	public static int FOO = 10;
-	
-	
+		
+
 	
 }
