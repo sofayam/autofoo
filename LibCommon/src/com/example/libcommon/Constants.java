@@ -24,8 +24,9 @@ public class Constants {
 		PLAYCATEGORY, // String category
 		PAUSE,        //
 		RESUME,       //
-		ADDCONFIG,    // String key, String val
-		
+		NEXT,         //
+		NEXTCATEGORY, //
+		ADDCONFIG,    // String key, String val		
 		BROWSE,		  // 
 		PLAYBRIEFING  //
 	}; 

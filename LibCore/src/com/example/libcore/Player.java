@@ -5,12 +5,14 @@ import android.util.Log;
 public class Player {
 	
 	private String TAG = "com.example.libcore.Player";
-	private Boolean playing = false;
-	private int progress = 0;
-	private Boolean paused = false;
+	Boolean playing = false;
+	int progress = 0;
+	Boolean paused = false;
+	Boolean finished = false;
 	
 	void play (String track) {
 		Log.i(TAG,"Now playing");
+		finished = false;
 		playing = true;
 		progress = 0;
 	}
@@ -30,11 +32,12 @@ public class Player {
 		return playing;
 	}
 	int getProgress() {
-		if (!paused) {
-			progress += 1;	
+		if ((!paused) && playing) {
+			progress = Math.min(100,progress + 25);	
 		}
-		if (progress > 100) { 
-			progress = 0; 
+		if (progress >= 100) { 
+			finished = true;
+			playing = false; 
 		};
 		return progress;
 	}

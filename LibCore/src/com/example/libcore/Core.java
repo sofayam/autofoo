@@ -18,6 +18,8 @@ public class Core {
 	
 	PlayerWatcher playerWatcher;
 	
+	StoryBoard storyBoard;
+	
 
 	
 	// ------------ S t a t e
@@ -28,7 +30,7 @@ public class Core {
 	
 	NestedMap config;
 
-	List <NewsForCategory> playList;
+	ArrayList <NewsForCategory> playList;
 	
 	// ------------ L i f e c y c l e
 	
@@ -41,7 +43,7 @@ public class Core {
 		core.callout = cout;
 		core.coreState = CoreState.STOPPED;		
 		// TODO only ever have one playerwatcher and one player?
-		core.playerWatcher = new PlayerWatcher(cout);
+		//core.playerWatcher = null;
 		core.setConfig();
 		Log.i(TAG, "revived the Core");
 		core.refreshNews();
@@ -81,23 +83,31 @@ public class Core {
 	
 	void playBriefing() {
 		coreState = CoreState.BRIEFING;
-		playerWatcher.playBriefing(playList);
-	}
-	
-	void play(String track, String category) {
-		playerWatcher.play(track);
-		callout.nowPlaying(track,category);
+		playerWatcher = new PlayerWatcher(callout);
+		playerWatcher.play(storyBoard);
 	}
 	
 	void pause() {
-		// TODO Seems to be OK just to pass these calls straight through
-		// rather than just creating a bunch of boilerplate
-		playerWatcher.player.pause();
+
+		if (playerWatcher == null) return;
+		playerWatcher.pause();
 	}
 	
 	void resume() {
-		playerWatcher.player.resume();
+		if (playerWatcher == null) return;
+		playerWatcher.resume();
 	}
+	
+	void next() {
+		if (playerWatcher == null) return;
+		playerWatcher.next();
+	}
+
+	void nextCategory() {
+		if (playerWatcher == null) return;
+		playerWatcher.nextCategory();
+	}
+
 	
 	void getConfig() {
 		callout.setConfig(config);
@@ -143,6 +153,7 @@ public class Core {
 					Integer.parseInt((String)nm.get("weight")));
 			playList.add(nfc);	
 		}
+		storyBoard = new StoryBoard(playList);
 
 		Log.i("TAG", "phew!!!");
 		
