@@ -28,7 +28,7 @@ public class PlayerWatcher {
             	int progress = 0; 
                 try {
        
-                    while(progress<100) {
+                    while(progress<200) {
                         progress = player.getProgress();
                     
                         sleep(1000);
