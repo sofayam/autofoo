@@ -2,6 +2,6 @@ package com.example.libcommon;
 
 
 public class NewsForCategory {
-	String category;
-	NewsItem [] items;
+	public String category;
+	public NewsItem [] items;
 }

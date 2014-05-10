@@ -2,6 +2,7 @@ package com.example.libcore;
 
 
 
+
 import com.example.libcommon.Constants;
 import com.example.libcommon.NestedMap;
 import com.example.libcommon.Constants.CoreCommand;
@@ -68,6 +69,13 @@ public class CoreService extends Service implements Callout{
 			break;
 		}
 		
+		case NEXT:
+			core.next();
+			break;
+			
+		case NEXTCATEGORY:
+			core.nextCategory();
+			
 		case RESUME: {
 			core.resume();
 			break;
