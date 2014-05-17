@@ -29,8 +29,6 @@ public class Constants {
 		ADDCONFIG,    // String key, String val		
 		BROWSE,		  // 
 		PLAYBRIEFING,  //
-		FOO,
-		BAR,
 		BAZ
 	}; 
 		
