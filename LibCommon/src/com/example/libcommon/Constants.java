@@ -28,7 +28,8 @@ public class Constants {
 		NEXTCATEGORY, //
 		ADDCONFIG,    // String key, String val		
 		BROWSE,		  // 
-		PLAYBRIEFING  //
+		PLAYBRIEFING,  //
+		ANOTHER
 	}; 
 		
 
