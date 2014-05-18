@@ -10,7 +10,7 @@ import com.example.libcommon.Constants.CoreCommand;
 import com.example.libcommon.NewsForCategory;
 import com.example.libcommon.NewsItem;
 import com.example.libcommon.NewsService;
-import com.example.secndscrn.YetAnother;
+import com.example.another.SecondScreen;
 
 import android.app.Service;
 import android.content.Intent;
@@ -96,7 +96,7 @@ public class CoreService extends Service implements Callout{
 		}
 		
 		case ANOTHER: {
-			Intent anotherIntent = new Intent(getBaseContext(), YetAnother.class);
+			Intent anotherIntent = new Intent(getBaseContext(), SecondScreen.class);
 			anotherIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			getApplication().startActivity(anotherIntent);
 			break;

@@ -22,11 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.secndscrn.YetAnother"
-            android:label="@string/title_activity_yet_another" >
+
+         <activity
+            android:name="com.example.another.SecondScreen"
+            android:label="THis is ANother" >
         </activity>
- 
+  
         <service
             android:name="com.example.libcore.CoreService"
             android:enabled="true"
