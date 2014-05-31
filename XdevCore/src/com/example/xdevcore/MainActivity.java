@@ -1,6 +1,9 @@
 package com.example.xdevcore;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.example.libcommon.Constants;
 import com.example.libcommon.Constants.DisplayCommand;
 import com.example.libcommon.Constants.CoreCommand;
@@ -29,6 +32,7 @@ import android.widget.Spinner;
 
 public class MainActivity extends Activity {
 
+    static Logger logger = LoggerFactory.getLogger(CoreService.class);
 	static final String TAG = "com.example.xdevcode.MainActivity";
 	Activity me = this;
 	private ProgressBar prog;
@@ -41,6 +45,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		setupInterface();
+		logger.info("+++++++++++++++++++++++++++++++++++++++++++ TADA!!!!!");
 	}
 	protected void onResume() {
 		Log.i(TAG,"!!!resuming");

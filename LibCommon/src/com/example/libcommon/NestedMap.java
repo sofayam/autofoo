@@ -5,11 +5,15 @@ import java.util.HashMap;
 
 //import android.util.Log;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class NestedMap extends HashMap<String,Object> implements Serializable{
 
 	
 	private static final long serialVersionUID = -5690396298231517172L;
+    static Logger logger = LoggerFactory.getLogger(NestedMap.class);
 	
 	public NestedMap deepClone() {
 		NestedMap deep = new NestedMap();
@@ -98,12 +102,11 @@ public class NestedMap extends HashMap<String,Object> implements Serializable{
 		nm1.putNested("a:d:b","adb");
 		nm1.putNested("d:e:f","def");
 		NestedMap nm2 = nm1.deepClone();
-/*		if (nm2 == nm1) {
-			Log.e("foo","failed test");
+		if (nm2 == nm1) {
+			logger.error("failed test");
 		} else {
-			Log.i("foo","Passed test");
-		}
-*/		
+			logger.info("Passed test");
+		}	
 	}
 	
 	

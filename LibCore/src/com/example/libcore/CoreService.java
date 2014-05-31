@@ -8,9 +8,9 @@ import com.example.libcommon.Constants;
 import com.example.libcommon.NestedMap;
 import com.example.libcommon.Constants.CoreCommand;
 import com.example.libcommon.NewsForCategory;
-import com.example.libcommon.NewsItem;
+
 import com.example.libcommon.NewsService;
-import com.example.another.SecondScreen;
+
 
 import android.app.Service;
 import android.content.Intent;
@@ -18,10 +18,14 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class CoreService extends Service implements Callout{
 	
 	static final String TAG = "com.example.libcore.CoreService";
+    static Logger logger = LoggerFactory.getLogger(CoreService.class);
 	Core core;
 	
 	public CoreService() {
@@ -31,6 +35,7 @@ public class CoreService extends Service implements Callout{
 	@Override
 	public void onCreate(){
 		Log.i(TAG,"created service");
+		logger.info("created service and logged it portably");
 		core = Core.revive(this);
 	}
 	public void onDestroy(){
@@ -95,13 +100,14 @@ public class CoreService extends Service implements Callout{
 			break;
 		}
 		
+		/*
 		case ANOTHER: {
 			Intent anotherIntent = new Intent(getBaseContext(), SecondScreen.class);
 			anotherIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			getApplication().startActivity(anotherIntent);
 			break;
 		}
-		
+		*/
 		default: 
 			Log.i(TAG, "unrecognised command");
 		}
