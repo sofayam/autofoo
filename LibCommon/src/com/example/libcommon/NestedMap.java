@@ -3,7 +3,7 @@ package com.example.libcommon;
 import java.io.Serializable;
 import java.util.HashMap;
 
-import android.util.Log;
+//import android.util.Log;
 
 
 public class NestedMap extends HashMap<String,Object> implements Serializable{
@@ -91,17 +91,19 @@ public class NestedMap extends HashMap<String,Object> implements Serializable{
 	
 	// Tests
 	
-	static void doTests() {
+	public static void doTests() {
 		NestedMap nm1 = new NestedMap();
 		nm1.putNested("a:b:c","abc");
 		nm1.putNested("a:b:d","abd");
 		nm1.putNested("a:d:b","adb");
 		nm1.putNested("d:e:f","def");
 		NestedMap nm2 = nm1.deepClone();
-		if (nm2 == nm1) {
+/*		if (nm2 == nm1) {
 			Log.e("foo","failed test");
+		} else {
+			Log.i("foo","Passed test");
 		}
-		
+*/		
 	}
 	
 	
