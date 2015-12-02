@@ -11,3 +11,5 @@ git config --global http.proxy http://127.0.0.1:3128
 # remember to unset later
 
 # git config --global --edit
+
+# or maybe this is much simpler
