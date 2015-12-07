@@ -15,3 +15,6 @@ git config --global http.proxy http://127.0.0.1:3128
 # or maybe this is much simpler
 
 # in fact super simple
+
+
+# and it seems to have stuck
